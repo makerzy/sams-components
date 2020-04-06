@@ -1,0 +1,20 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Date-Picker
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+
+
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <app-date-picker (sendDate)="change= $event" [currentDate]="date" class="ion-float-left"></app-date-picker>
+
+  </div>
+
+  <h3>{{change}}</h3>
+</ion-content>
