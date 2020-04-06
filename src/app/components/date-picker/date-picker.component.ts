@@ -42,34 +42,31 @@ export class DatePickerComponent implements OnInit {
   date = this.today;
   @Input() currentDate: string;
   @Output() public sendDate: EventEmitter<string> = new EventEmitter();
-  newDate: any = "";
+  newDate: any = ""; //to be Displayed
 
   constructor(private moment: MomentService) {
     const today = this.moment.convertDateToISO(new Date());
+    //slicing the desired length to be printed
     if (today.length > 10) {
       const numtoday = today.slice(0, 10);
       this.today = numtoday;
     }
-
+    //datepicker range
     this.maxDate = this.moment.getMaxDate();
     this.minDate = this.moment.getMinDate();
   }
 
   ngOnInit() {}
   addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
+    //get datepicker input value
     const convevent = this.moment.convertDateToISO(event.value);
-
+    //setting and displaying the input value
     this.newDate = `${convevent}`;
   }
+
   getInput(event) {
+    //ngModel binding and setting the date value to user keyboard input value with on focusout event
     const indate = event.value;
     this.date = indate;
-  }
-  selectedDate(event: MatDatepickerInputEvent<Date>) {
-    if (this.date !== this.today) {
-      this.date = this.moment.convertDateToISO(event.value);
-
-      this.newDate = this.date;
-    }
   }
 }
