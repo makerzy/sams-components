@@ -12,31 +12,36 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatExpansionModule } from "@angular/material/expansion";
-
+import { MatFormFieldModule } from "@angular/material";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatInputModule } from "@angular/material/input";
 import { MatNativeDateModule } from "@angular/material/core";
 import { FormsModule } from "@angular/forms";
+import { AngularFireModule } from "@angular/fire";
+import { environment } from "../environments/environment";
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
+    AngularFireModule.initializeApp(environment.firebase),
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatCheckboxModule,
     MatDatepickerModule,
+
     MatInputModule,
     MatNativeDateModule,
     MatExpansionModule,
-    FormsModule
+    FormsModule,
+    MatFormFieldModule,
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
   ],
   exports: [
     MatButtonModule,
@@ -44,8 +49,8 @@ import { FormsModule } from "@angular/forms";
     MatDatepickerModule,
     MatInputModule,
     MatNativeDateModule,
-    MatExpansionModule
+    MatExpansionModule,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

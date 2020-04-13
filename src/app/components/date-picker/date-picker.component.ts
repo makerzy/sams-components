@@ -18,7 +18,6 @@ import {
 import { MomentService } from "src/app/services/moment/moment.service";
 import { MY_FORMAT } from "../../services/format/format.service";
 import { MatDatepickerInputEvent } from "@angular/material/datepicker";
-import { NgModel } from "@angular/forms";
 
 @Component({
   selector: "app-date-picker",

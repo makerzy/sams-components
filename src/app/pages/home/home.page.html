@@ -12,9 +12,15 @@
 
 <ion-content [fullscreen]="true">
   <div class="container">
-    <app-date-picker (sendDate)="change= $event" [currentDate]="date" class="ion-float-left"></app-date-picker>
+    <app-date-picker class="ion-float-left"></app-date-picker>
+
 
   </div>
 
-  <h3>{{change}}</h3>
+
+
+  <app-date></app-date>
+
+
+
 </ion-content>
