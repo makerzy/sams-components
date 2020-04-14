@@ -1,8 +1,14 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="secondary">
     <ion-title>
       Date-Picker
     </ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="navigate()" color="light" fill="outline">
+        Select Date
+
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -12,7 +18,16 @@
 
 <ion-content [fullscreen]="true">
   <div class="container">
-    <app-date-picker [date]="today" [header]="header" (sendDate)="today = $event" class="ion-float-left"></app-date-picker>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col size="3" offset="2">
+          <app-date-picker [date]="today" [header]="header" (sendDate)="today = $event" class="ion-float-left">
+          </app-date-picker>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
   </div>
 
 </ion-content>

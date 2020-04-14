@@ -6,14 +6,19 @@ const routes: Routes = [
   {
     path: "home",
     loadChildren: () =>
-      import("./pages/home/home.module").then(m => m.HomePageModule)
-  }
+      import("./pages/home/home.module").then((m) => m.HomePageModule),
+  },
+  {
+    path: "dates",
+    loadChildren: () =>
+      import("./dates/dates.module").then((m) => m.DatesPageModule),
+  },
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}
