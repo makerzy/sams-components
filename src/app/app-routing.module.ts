@@ -8,11 +8,6 @@ const routes: Routes = [
     loadChildren: () =>
       import("./pages/home/home.module").then((m) => m.HomePageModule),
   },
-  {
-    path: "dates",
-    loadChildren: () =>
-      import("./dates/dates.module").then((m) => m.DatesPageModule),
-  },
 ];
 
 @NgModule({

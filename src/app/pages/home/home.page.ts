@@ -14,9 +14,9 @@ export class HomePage {
   endHeader: string;
   constructor(private moment: MomentService, private router: Router) {
     this.startDate = "";
-    this.startHeader = "";
+    this.startHeader = "Start Date";
     this.endDate = "";
-    this.endHeader = "";
+    this.endHeader = "End Date";
   }
 
   ngOnInit() {}

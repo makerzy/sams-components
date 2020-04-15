@@ -8,8 +8,8 @@
   <div class="container">
     <ion-grid>
       <ion-row class="ion-justify-content-center ion">
-        <app-date [endDate]="endDate" (sendDate)="endDate = $event" [startDate]="startDate"
-          (emitDate)="startDate=$event"></app-date>
+        <app-date-picker [endDate]="endDate" (sendDate)="endDate = $event" [startDate]="startDate"
+          [startHeader]="startHeader" [endHeader]="endHeader" (emitDate)="startDate=$event"></app-date-picker>
       </ion-row>
     </ion-grid>
   </div>
