@@ -1,11 +1,31 @@
-<mat-form-field color="accent">
-  <mat-label>End Date</mat-label>
-  <input matInput [matDatepicker]="picker" [value]="date" [min]="minDate" [max]="maxDate"
-    (dateChange)="changedDate($event)">
-  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-  <mat-datepicker touchUi #picker></mat-datepicker>
-</mat-form-field>
+<div class="container">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <mat-form-field color="accent">
+          <mat-label>{{startHeader}}</mat-label>
+          <input matInput [matDatepicker]="picker" [value]="startDate" [min]="startMinDate" [max]="startMaxDate"
+            (dateChange)="changedDate($event)" />
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker touchUi #picker></mat-datepicker>
+        </mat-form-field>
+      </ion-col>
+      <ion-col>
+        <mat-form-field color="accent">
+          <mat-label>{{endHeader}}</mat-label>
+          <input matInput [matDatepicker]="picker1" [value]="endDate" [min]="endMinDate" [max]="endMaxDate"
+            (dateChange)="onChange($event)" />
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker touchUi #picker1></mat-datepicker>
+        </mat-form-field>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>
 
-<div>
-  <h4>{{'Saved Format: ' + date}}</h4>
+<div *ngIf="startDate && endDate">
+  <h4>
+    {{ "Start Date: " + startDate.split("T")[0] }}
+    {{ "EndDate: " + endDate.split("T")[0] }}
+  </h4>
 </div>

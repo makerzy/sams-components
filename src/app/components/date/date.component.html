@@ -6,7 +6,6 @@
           <mat-label>Start Date</mat-label>
           <input matInput [matDatepicker]="picker" [value]="startDate" [min]="startMinDate" [max]="startMaxDate"
             (dateChange)="changedDate($event)" />
-
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker touchUi #picker></mat-datepicker>
         </mat-form-field>
