@@ -8,7 +8,6 @@ import { Moment } from "moment";
   styleUrls: ["./date-picker.component.scss"],
 })
 export class DatePickerComponent {
-  @Input() header: string;
   @Input() date: string;
   @Output() sendDate: EventEmitter<string> = new EventEmitter();
 
