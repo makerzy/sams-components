@@ -1,0 +1,12 @@
+<ion-item *ngIf="data" [lines]="data.hideLines ? 'none' : ''">
+  <ion-note class="required-font-size" slot="end" *ngIf="data.requiredNote" color="danger">{{'required'}}</ion-note>
+  <ion-label class="ion-text-wrap" color="secondary" position="stacked" [innerHTML]="data.header"></ion-label>
+  <ion-input [ngClass]="{'ion-text-capitalize': ( input.capitalize ), 'ion-text-uppercase': ( input.uppercase )}" debounce="300" [min]="input.min" [max]="input.max" (ionChange)="sendEnteredData()" *ngIf="data.textInput as input" [type]="input.type" [(ngModel)]="data.data"></ion-input>
+  <ion-textarea [placeholder]="text['map-placeholder']" (ionChange)="sendEnteredData()" *ngIf="data.textAreaInput as input" [rows]="input.rows" [(ngModel)]="data.data">
+  </ion-textarea>
+  <ion-toggle (ionChange)="sendEnteredData()" *ngIf="data.toggleInput as input" [(ngModel)]="data.data"></ion-toggle>
+  <ion-label class="ion-text-wrap" *ngIf="data.textOnly as text" [innerHTML]="text.text"></ion-label>
+  <ion-icon *ngIf="data.icon && data.icon.show" [name]="data.icon.name" [size]="data.icon.size" [color]="data.icon.color" (click)="clickedIcon()" [slot]="data.icon.slot">
+  </ion-icon>
+  <ion-badge slot="end" *ngIf="data.endBadge as badge" [color]="badge.color">{{badge.text}}</ion-badge>
+</ion-item>
