@@ -7,15 +7,21 @@ import { Moment } from "moment";
   styleUrls: ["./date.component.scss"],
 })
 export class DateComponent implements OnInit {
-  @Input() header: string;
-  @Input() date: string;
-  @Output() sendDate: EventEmitter<string> = new EventEmitter();
+  @Input() startDate: string;
+  @Input() endDate: string;
+  @Output() sendDate: EventEmitter<any> = new EventEmitter();
+  @Output() emitDate: EventEmitter<any> = new EventEmitter();
 
-  minDate: Moment;
-  maxDate: Moment;
+  startMinDate: Date;
+  startMaxDate: Date;
+  endMinDate: Date;
+  endMaxDate: Date;
+
   constructor(private moment: MomentService) {
-    this.maxDate = this.moment.getMaxDate();
-    this.minDate = this.moment.getMinDate();
+    this.startMaxDate = this.moment.getMaxDate().toDate();
+    this.startMinDate = this.moment.getMinDate().toDate();
+    this.endMaxDate = this.moment.getMaxDate().toDate();
+    this.endMinDate = this.moment.getMinDate().toDate();
   }
 
   ngOnInit() {}
@@ -23,5 +29,10 @@ export class DateComponent implements OnInit {
   onChange({ value }) {
     const ISOString = value.toISOString();
     this.sendDate.emit(ISOString);
+  }
+
+  changedDate({ value }) {
+    const ISOString = value.toISOString();
+    this.emitDate.emit(ISOString);
   }
 }

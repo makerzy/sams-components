@@ -7,15 +7,14 @@ import { Router } from "@angular/router";
   styleUrls: ["./dates.page.scss"],
 })
 export class DatesPage implements OnInit {
-  date: string;
-  header: string;
-  header2: string;
-  date2: string;
+  startDate: string;
+
+  endDate: string;
+
   constructor(private moment: MomentService, private router: Router) {
-    this.header = "End Date";
-    this.date = this.moment.getMoment().toISOString();
-    this.header2 = "Start Date";
-    this.date2 = this.moment.getMoment().toISOString();
+    this.startDate = "";
+
+    this.endDate = "";
   }
 
   ngOnInit() {}

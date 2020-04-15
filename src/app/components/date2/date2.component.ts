@@ -8,7 +8,6 @@ import { MomentService } from "src/app/services/moment/moment.service";
   styleUrls: ["./date2.component.scss"],
 })
 export class Date2Component implements OnInit {
-  @Input() header2: string;
   @Input() date2: string;
   @Output() sendDate: EventEmitter<string> = new EventEmitter();
 
