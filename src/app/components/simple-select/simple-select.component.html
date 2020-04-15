@@ -1,0 +1,55 @@
+<ion-grid *ngIf="data && list" class="ion-no-padding">
+  <ion-row class="ion-no-padding">
+    <ion-col class="ion-no-padding" [size]="data.hideDelete ? 12 : 11">
+      <ion-item *ngIf="interface !== 'chips'" [lines]="data.hideLines ? 'none' : ''">
+        <ion-note class="required-font-size" slot="end" *ngIf="data.requiredNote" color="danger">{{requiredText}}
+        </ion-note>
+        <ion-label class="ion-text-wrap header-label" color="secondary" position="stacked" [innerHTML]="data.header">
+        </ion-label>
+        <ion-select class="ion-text-uppercase" *ngIf="listType === 'object'" [multiple]="data.multiple" mode="md"
+          [disabled]="data.disabled" [interface]="interface" (ionChange)="selectItem()" [(ngModel)]="data.selected">
+          <ion-select-option *ngIf="data.dataMissing" value="dataMissing" [innerHTML]="'DATA MISSING'">
+          </ion-select-option>
+          <ion-select-option class="ion-text-wrap ion-text-uppercase"
+            *ngFor="let item of list | orderBy: data.sortAlphabetically"
+            [value]="item[data.valueKey] ? item[data.valueKey] : item.value"
+            [innerHTML]="item[data.textKey] ? item[data.textKey].toUpperCase() : item.text.toUpperCase()">
+          </ion-select-option>
+        </ion-select>
+
+        <ion-select class="ion-text-uppercase" *ngIf="listType !== 'object'" [multiple]="data.multiple"
+          [disabled]="data.disabled" [interface]="interface" (ionChange)="selectItem()" [(ngModel)]="data.selected"
+          mode="md">
+          <ion-select-option *ngIf="data.dataMissing" value="dataMissing" [innerHTML]="'DATA MISSING'">
+          </ion-select-option>
+          <ion-select-option class="ion-text-wrap ion-text-uppercase" *ngFor="let item of list" [value]="item"
+            [innerHTML]="item">
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item *ngIf="interface === 'chips'">
+        <ion-grid>
+          <ion-row class="ion-margin-bottom">
+            <ion-label color="secondary">{{data.header}}</ion-label>
+          </ion-row>
+          <ion-row class="ion-justify-content-center">
+            <ion-chip
+              [ngClass]="{ 'green-background' : ( data.selected === chip.value || (data.selected && data.selected.includes(chip.value) ) ), 'blue-background': ( data.selected !== chip.value || (data.selected && !data.selected.includes(chip.value) ) ) }"
+              *ngFor="let chip of list">
+              <ion-label color="light" (click)="selectChip(chip.value)">{{chip.text}}</ion-label>
+            </ion-chip>
+          </ion-row>
+        </ion-grid>
+
+      </ion-item>
+    </ion-col>
+    <ion-col size="1" class="ion-no-padding">
+      <ion-row class="center-row-content">
+        <ion-icon *ngIf="!data.hideDelete" class="custom-text-size" color="danger" name="close"
+          (click)="deleteSelection()"></ion-icon>
+        <ion-icon *ngIf="data.selectAll" class="custom-text-size" color="success" name="done-all" (click)="selectAll()">
+        </ion-icon>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+</ion-grid>
