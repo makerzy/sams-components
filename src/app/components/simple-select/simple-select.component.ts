@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core';
-import {Pipe} from '@angular/core';
+
 export interface SimpleSelectorData {
   selected: any;
   header: string;
@@ -8,11 +8,8 @@ export interface SimpleSelectorData {
   multiple?: boolean;
   hideDelete?: boolean;
   interface?: 'action-sheet' | 'popover' | 'alert' | 'chips';
-  regularLabel?: boolean;
   sortAlphabetically?: string; //set the value to the property you want to sort by
-  hideLines?: boolean;
   selectAll?: boolean;
-  dataMissing?: boolean;
   requiredNote?: boolean;
 }
 
@@ -24,7 +21,7 @@ export interface SimpleSelectorData {
 export class SimpleSelectComponent implements OnChanges {
 
   @Input() list: any[];
-  @Input() data: SimpleSelectorData
+  @Input() data: SimpleSelectorData;
   @Output() sendData: EventEmitter<any>;
 
   interface;
@@ -36,6 +33,7 @@ export class SimpleSelectComponent implements OnChanges {
   }
 
   selectItem() {
+    console.log('OnChange');
     this.sendData.emit(this.data.selected);
   }
 
@@ -56,11 +54,16 @@ export class SimpleSelectComponent implements OnChanges {
 
   ngOnChanges() {
     if (this.list && this.data && !this.interface) {
-      if (this.data.sortAlphabetically) {
-        this.list = this.list.sort((a, b) => a[this.data.sortAlphabetically].localeCompare(b[this.data.sortAlphabetically]));
-      }
       this.interface = this.determineInterface();
       this.listType = typeof this.list[0];
+      const newList = [];
+      if (this.list[0].isobject()){
+        this.list.forEach(record=> {
+          const temp = record.name;
+          newList.push(temp);
+        });
+       this.list = newList;
+      }
     }
   }
 

@@ -11,6 +11,9 @@ import { MatInputModule } from "@angular/material/input";
 import { MatNativeDateModule } from "@angular/material/core";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import {SimpleSelectComponent} from "./simple-select/simple-select.component";
+import {NgPipesModule} from "ngx-pipes";
+import { MatSelectModule } from '@angular/material';
+
 
 @NgModule({
   declarations: [DatePickerComponent, SimpleSelectComponent],
@@ -23,7 +26,9 @@ import {SimpleSelectComponent} from "./simple-select/simple-select.component";
     MatNativeDateModule,
     MatExpansionModule,
     MatFormFieldModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSelectModule,
+    NgPipesModule
     ],
   exports: [DatePickerComponent, SimpleSelectComponent],
 })

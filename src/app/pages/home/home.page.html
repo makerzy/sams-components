@@ -11,6 +11,13 @@
         <app-date-picker [endDate]="endDate" (sendDate)="endDate = $event" [startDate]="startDate"
           [startHeader]="startHeader" [endHeader]="endHeader" (emitDate)="startDate=$event"></app-date-picker>
       </ion-row>
+
+      <ion-row>
+        <app-simple-select [list]="data" [data]="clinicianSelectorData" (sendData)="retrieveClinicianSelection($event)">
+
+        </app-simple-select>
+
+      </ion-row>
     </ion-grid>
   </div>
 </ion-content>

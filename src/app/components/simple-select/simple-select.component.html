@@ -3,33 +3,35 @@
     <ion-col class="ion-no-padding" [size]="data.hideDelete ? 12 : 11">
 
 <!------------------------------------------------------------------------------------->
-  <!-- <div *ngIf="interface !== 'chips'" ngbind="data.hideLines ? 'none' : ''">
+  <mat-form-field *ngIf="interface !== 'chips'" ngbind="data.hideLines ? 'none' : ''">
     <p class="required-font-size" slot="end" *ngIf="data.requiredNote" color="danger">{{requiredText}}</p>
     <label class="ion-text-wrap header-label" color="secondary" position="stacked" [innerHTML]="data.header"></label>
   
-    <select class="ion-text-uppercase" *ngIf="listType === 'object'" ngbind="data.multiple" mode="md"
-    [disabled]="data.disabled" ngbind="interface" (onChange)="selectItem()" [(ngModel)]="data.selected">
-    <option *ngIf="data.dataMissing" value="dataMissing" [innerHTML]="'DATA MISSING'"></option>
-    <option class="ion-text-wrap ion-text-uppercase"
-    *ngFor="let item of list | data.sortAlphabetically"
+    <mat-select class="ion-text-uppercase" *ngIf="listType === 'object'"  mode="md"
+    [disabled]="data.disabled" ngbind="interface" (selectionChange)="selectItem()" [(ngModel)]="data.selected"
+     [multiple]="data.multiple" >
+    <mat-option *ngIf="data.dataMissing" value="dataMissing" [innerHTML]="'DATA MISSING'"></mat-option>
+    <mat-option class="ion-text-wrap ion-text-uppercase"
+  *ngFor="let item of list | orderBy: data.sortAlphabetically"
     [value]="item[data.valueKey] ? item[data.valueKey] : item.value"
-    [innerHTML]="item[data.textKey] ? item[data.textKey].toUpperCase() : item.text.toUpperCase()"></option>
+    [innerHTML]="item[data.textKey] ? item[data.textKey].toUpperCase() : item.text.toUpperCase()"></mat-option>
   
-  </select>
+  </mat-select>
 
-  <select class="ion-text-uppercase" *ngIf="listType !== 'object'" ngbind="data.multiple"
-  [disabled]="data.disabled" ngbind="interface" (onChange)="selectItem()" [(ngModel)]="data.selected"
-  mode="md">
+  <mat-select class="ion-text-uppercase" *ngIf="listType !== 'object'"
+  [disabled]="data.disabled" ngbind="interface" (selectionChange)="selectItem()" [(ngModel)]="data.selected"
+  mode="md" [multiple]="data.multiple">
 
-  <option *ngIf="data.dataMissing" value="dataMissing" [innerHTML]="'DATA MISSING'"></option>
-  <option class="ion-text-wrap ion-text-uppercase" *ngFor="let item of list" [value]="item"
-  [innerHTML]="item"></option>
-  </select>
-  </div>
- -->
+  <mat-option *ngIf="data.dataMissing" value="dataMissing" [innerHTML]="'DATA MISSING'"></mat-option>
+  <mat-option class="ion-text-wrap ion-text-uppercase" *ngFor="let item of list" [value]="item"
+  [innerHTML]="item"></mat-option>
+
+  </mat-select>
+  </mat-form-field>
+
 
 <!------------------------------------------------------------------------------------->      
-      <ion-item *ngIf="interface !== 'chips'" [lines]="data.hideLines ? 'none' : ''">
+      <!-- <ion-item *ngIf="interface !== 'chips'" [lines]="data.hideLines ? 'none' : ''">
         <ion-note class="required-font-size" slot="end" *ngIf="data.requiredNote" color="danger">{{requiredText}}
         </ion-note>
         <ion-label class="ion-text-wrap header-label" color="secondary" position="stacked" [innerHTML]="data.header">
@@ -54,7 +56,7 @@
             [innerHTML]="item">
           </ion-select-option>
         </ion-select>
-      </ion-item>
+      </ion-item> -->
 <!------------------------------------------------------------------------------------->
       
 
