@@ -1,6 +1,34 @@
 <ion-grid *ngIf="data && list" class="ion-no-padding">
   <ion-row class="ion-no-padding">
     <ion-col class="ion-no-padding" [size]="data.hideDelete ? 12 : 11">
+
+<!------------------------------------------------------------------------------------->
+  <!-- <div *ngIf="interface !== 'chips'" ngbind="data.hideLines ? 'none' : ''">
+    <p class="required-font-size" slot="end" *ngIf="data.requiredNote" color="danger">{{requiredText}}</p>
+    <label class="ion-text-wrap header-label" color="secondary" position="stacked" [innerHTML]="data.header"></label>
+  
+    <select class="ion-text-uppercase" *ngIf="listType === 'object'" ngbind="data.multiple" mode="md"
+    [disabled]="data.disabled" ngbind="interface" (onChange)="selectItem()" [(ngModel)]="data.selected">
+    <option *ngIf="data.dataMissing" value="dataMissing" [innerHTML]="'DATA MISSING'"></option>
+    <option class="ion-text-wrap ion-text-uppercase"
+    *ngFor="let item of list | data.sortAlphabetically"
+    [value]="item[data.valueKey] ? item[data.valueKey] : item.value"
+    [innerHTML]="item[data.textKey] ? item[data.textKey].toUpperCase() : item.text.toUpperCase()"></option>
+  
+  </select>
+
+  <select class="ion-text-uppercase" *ngIf="listType !== 'object'" ngbind="data.multiple"
+  [disabled]="data.disabled" ngbind="interface" (onChange)="selectItem()" [(ngModel)]="data.selected"
+  mode="md">
+
+  <option *ngIf="data.dataMissing" value="dataMissing" [innerHTML]="'DATA MISSING'"></option>
+  <option class="ion-text-wrap ion-text-uppercase" *ngFor="let item of list" [value]="item"
+  [innerHTML]="item"></option>
+  </select>
+  </div>
+ -->
+
+<!------------------------------------------------------------------------------------->      
       <ion-item *ngIf="interface !== 'chips'" [lines]="data.hideLines ? 'none' : ''">
         <ion-note class="required-font-size" slot="end" *ngIf="data.requiredNote" color="danger">{{requiredText}}
         </ion-note>
@@ -11,7 +39,7 @@
           <ion-select-option *ngIf="data.dataMissing" value="dataMissing" [innerHTML]="'DATA MISSING'">
           </ion-select-option>
           <ion-select-option class="ion-text-wrap ion-text-uppercase"
-            *ngFor="let item of list | orderBy: data.sortAlphabetically"
+            *ngFor="let item of list | data.sortAlphabetically"
             [value]="item[data.valueKey] ? item[data.valueKey] : item.value"
             [innerHTML]="item[data.textKey] ? item[data.textKey].toUpperCase() : item.text.toUpperCase()">
           </ion-select-option>
@@ -27,7 +55,11 @@
           </ion-select-option>
         </ion-select>
       </ion-item>
-      <ion-item *ngIf="interface === 'chips'">
+<!------------------------------------------------------------------------------------->
+      
+
+
+<ion-item *ngIf="interface === 'chips'">
         <ion-grid>
           <ion-row class="ion-margin-bottom">
             <ion-label color="secondary">{{data.header}}</ion-label>
@@ -42,6 +74,7 @@
         </ion-grid>
 
       </ion-item>
+    
     </ion-col>
     <ion-col size="1" class="ion-no-padding">
       <ion-row class="center-row-content">

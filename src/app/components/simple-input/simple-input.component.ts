@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { text } from 'src/app/app.component';
+//import { text } from 'src/app/app.component';
 
 export interface SimpleInputDataObject {
   data: string | number | boolean;
@@ -46,7 +46,7 @@ export class SimpleInputComponent implements OnInit {
   @Output() sendData: EventEmitter<SimpleInputDataObject['data']>;
   @Output() iconClicked: EventEmitter<boolean>;
 
-  text = text;
+ // text = text;
 
 
   constructor() {
