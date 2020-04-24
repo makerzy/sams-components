@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core';
-
+import {Pipe} from '@angular/core';
 export interface SimpleSelectorData {
   selected: any;
   header: string;
