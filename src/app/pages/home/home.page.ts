@@ -8,20 +8,25 @@ import { Router } from "@angular/router";
   styleUrls: ["home.page.scss"],
 })
 export class HomePage {
-  startDate: string;
-  startHeader: string;
-  endDate: string;
-  endHeader: string;
+  today: string;
+  header: string;
+  day: string;
+  header2: string;
+  dummyData = "test123";
   constructor(private moment: MomentService, private router: Router) {
-    this.startDate = "";
-    this.startHeader = "Start Date";
-    this.endDate = "";
-    this.endHeader = "End Date";
+    this.today = this.moment.getMoment().toISOString();
+    this.header = "Date of Birth";
+    this.header2 = "End Date";
+    this.day = this.moment.getMoment().toISOString();
   }
 
-  ngOnInit() {}
-
   navigate() {
-    this.router.navigate(["/"]);
+    this.router.navigate(["/dates"]);
+  }
+
+  doMore(key: string, data: any) {
+    this[key] = data;
+    // do your other stuff here
+    console.log(data);
   }
 }

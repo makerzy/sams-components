@@ -37,3 +37,10 @@ ion-content ion-toolbar {
   align-items: center;
   margin: 4rem auto;
 }
+
+app-simple-material {
+  display: grid;
+  grid-template-columns: repeat(1fr, 3);
+
+  margin: 3rem 1rem 0;
+}

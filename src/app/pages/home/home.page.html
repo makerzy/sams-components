@@ -1,16 +1,53 @@
-<ion-header>
-  <ion-toolbar color="tertiary">
-    <ion-title>Select Date</ion-title>
+<ion-header [translucent]="true">
+  <ion-toolbar color="secondary">
+    <ion-title>
+      Date-Picker
+    </ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="navigate()" color="light" fill="outline">
+        Select Date
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <div class="container">
     <ion-grid>
-      <ion-row class="ion-justify-content-center ion">
-        <app-date-picker [endDate]="endDate" (sendDate)="endDate = $event" [startDate]="startDate"
-          [startHeader]="startHeader" [endHeader]="endHeader" (emitDate)="startDate=$event"></app-date-picker>
+      <ion-row>
+        <ion-col size="3" offset="2">
+          <app-date-picker [date]="today" (sendDate)="today = $event" class="ion-float-left">
+          </app-date-picker>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <app-date-range-selector></app-date-range-selector>
+      </ion-row>
+      <ion-row>
+        <app-simple-input [data]="{ header: 'Test', data: dummyData, textInput: { type: 'text' }, 
+          icon: { name: 'alert-circle-outline', show: true, slot: 'end' } }" (sendData)="doMore('dummyData', $event)">
+        </app-simple-input>
+
+        <app-simple-input [data]="{ header: 'Test2', data: 'test2', textAreaInput: { rows: 6 } }">
+        </app-simple-input>
+
+        <app-simple-input [data]="{ header: 'Test3', data: true, toggleInput: { active: true } }">
+        </app-simple-input>
+      </ion-row>
+
+
+      <ion-row>
+        <app-simple-material [data]="{ header: 'Test', data: dummyData, textInput: { type: 'text' }, 
+          icon: { name: 'now_widgets', show: true, slot: 'end' } }" (sendData)="doMore('dummyData', $event)">
+        </app-simple-material>
+
+        <app-simple-material [data]="{ header: 'Test2', data: 'test2', textAreaInput: { rows: 6 } }">
+        </app-simple-material>
+
+        <app-simple-material [data]="{ header: 'Test3', data: true, toggleInput: { active: true } }">
+        </app-simple-material>
       </ion-row>
     </ion-grid>
   </div>
+
 </ion-content>

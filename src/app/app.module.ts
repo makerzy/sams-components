@@ -9,12 +9,8 @@ import { StatusBar } from "@ionic-native/status-bar/ngx";
 import { AppComponent } from "./app.component";
 import { AppRoutingModule } from "./app-routing.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { MatButtonModule } from "@angular/material/button";
-import { MatCheckboxModule } from "@angular/material/checkbox";
-import { MatExpansionModule } from "@angular/material/expansion";
-import { MatFormFieldModule } from "@angular/material";
-import { MatDatepickerModule } from "@angular/material/datepicker";
-import { MatInputModule } from "@angular/material/input";
+import { MaterialModule } from "./material/material.module";
+
 import {
   MatNativeDateModule,
   MAT_DATE_LOCALE,
@@ -25,6 +21,9 @@ import {
   MomentDateAdapter,
   MAT_MOMENT_DATE_ADAPTER_OPTIONS,
 } from "@angular/material-moment-adapter";
+import { AngularFireModule } from "@angular/fire";
+import { environment } from "../environments/environment";
+import { ComponentsModule } from "./components/components.module";
 
 @NgModule({
   declarations: [AppComponent],
@@ -32,17 +31,16 @@ import {
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
+    AngularFireModule.initializeApp(environment.firebase),
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatButtonModule,
-    MatCheckboxModule,
-    MatDatepickerModule,
 
-    MatInputModule,
+    ComponentsModule,
+
     MatNativeDateModule,
-    MatExpansionModule,
+
     FormsModule,
-    MatFormFieldModule,
+    MaterialModule,
   ],
   providers: [
     StatusBar,
@@ -55,14 +53,7 @@ import {
       deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
     },
   ],
-  exports: [
-    MatButtonModule,
-    MatCheckboxModule,
-    MatDatepickerModule,
-    MatInputModule,
-    MatNativeDateModule,
-    MatExpansionModule,
-  ],
+  exports: [MatNativeDateModule],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

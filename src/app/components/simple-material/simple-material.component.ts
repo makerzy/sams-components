@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
-
+import { MatFormFieldControl } from "@angular/material/form-field";
 export interface SimpleInputDataObject {
   data: string | number | boolean;
   header: string;
@@ -26,9 +26,9 @@ export interface SimpleInputDataObject {
   };
   icon: {
     name: string;
-    size?: "small" | "large";
-    color?: string;
-    slot?: "start" | "end";
+    size: "small" | "large";
+    color: string;
+    slot: "start" | "end";
     show: boolean;
   };
   textOnly: {
@@ -41,13 +41,12 @@ export interface SimpleInputDataObject {
   };
   requiredNote?: boolean;
 }
-
 @Component({
-  selector: "app-simple-input",
-  templateUrl: "./simple-input.component.html",
-  styleUrls: ["./simple-input.component.scss"],
+  selector: "app-simple-material",
+  templateUrl: "./simple-material.component.html",
+  styleUrls: ["./simple-material.component.scss"],
 })
-export class SimpleInputComponent implements OnInit {
+export class SimpleMaterialComponent implements OnInit {
   @Input() data: SimpleInputDataObject;
   @Output() sendData: EventEmitter<SimpleInputDataObject["data"]>;
   @Output() iconClicked: EventEmitter<boolean>;

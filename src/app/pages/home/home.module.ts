@@ -6,6 +6,7 @@ import { RouterModule } from "@angular/router";
 
 import { HomePage } from "./home.page";
 import { ComponentsModule } from "src/app/components/components.module";
+import { MaterialModule } from "src/app/material/material.module";
 
 @NgModule({
   imports: [
@@ -13,6 +14,7 @@ import { ComponentsModule } from "src/app/components/components.module";
     ComponentsModule,
     FormsModule,
     IonicModule,
+    MaterialModule,
     RouterModule.forChild([
       {
         path: "",

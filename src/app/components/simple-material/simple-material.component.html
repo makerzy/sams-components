@@ -1,0 +1,37 @@
+<mat-card class="" *ngIf="data">
+  <mat-hint class="required-font-size" slot="end" *ngIf="data.requiredNote" color="warn"></mat-hint>
+
+  <mat-form-field *ngIf="data.textInput as input">
+    <mat-label>{{data.header}}</mat-label>
+
+    <input matInput
+      [ngClass]="{'ion-text-capitalize':(input.capitalize), 'ion-text-uppercase':(data.textInput.uppercase)}"
+      debounce='300' [min]="input.min" [max]="input.max" (changed)="sendEnteredData()" [type]="input.type"
+      [(ngModel)]="data.data" />
+
+  </mat-form-field><br />
+
+  <mat-form-field *ngIf="data.textAreaInput as input">
+    <mat-label>{{data.header}}</mat-label>
+    <textarea matInput [placeholder]="'placeholder'" (changed)="sendEnteredData()" [rows]="input.rows"
+      [(ngModel)]="data.data"></textarea>
+  </mat-form-field>
+
+  <div *ngIf="data.toggleInput as input">
+
+    <mat-slide-toggle (changed)="sendEnteredData()" [(ngModel)]="data.data">
+    </mat-slide-toggle>
+
+  </div>
+
+  <div *ngIf="data.textOnly as text">
+    <mat-label class="ion-text-wrap">{{text.text}}</mat-label>
+  </div>
+
+  <div *ngIf="data.icon && data.icon.show">
+    <mat-icon matBadge="11" matBadgeOverlap="false" color="primary">{{data.icon.name}}</mat-icon>
+  </div>
+
+
+
+</mat-card>

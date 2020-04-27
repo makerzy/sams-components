@@ -4,26 +4,31 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { IonicModule } from "@ionic/angular";
 import { DatePickerComponent } from "./date-picker/date-picker.component";
 
-import { MatExpansionModule } from "@angular/material/expansion";
-
-import { MatDatepickerModule } from "@angular/material/datepicker";
-import { MatInputModule } from "@angular/material/input";
-import { MatNativeDateModule } from "@angular/material/core";
-import { MatFormFieldModule } from "@angular/material/form-field";
+import { MaterialModule } from "../material/material.module";
+import { SimpleInputComponent } from "./simple-input/simple-input.component";
+import { SimpleMaterialComponent } from "./simple-material/simple-material.component";
+import { DateRangeSelectorComponent } from "./date-range-selector/date-range-selector.component";
 
 @NgModule({
-  declarations: [DatePickerComponent],
+  declarations: [
+    DatePickerComponent,
+    SimpleInputComponent,
+    SimpleMaterialComponent,
+    DateRangeSelectorComponent,
+  ],
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    MatDatepickerModule,
-    MatInputModule,
-    MatNativeDateModule,
-    MatExpansionModule,
-    MatFormFieldModule,
+
     ReactiveFormsModule,
+    MaterialModule,
   ],
-  exports: [DatePickerComponent],
+  exports: [
+    DatePickerComponent,
+    SimpleInputComponent,
+    DateRangeSelectorComponent,
+    SimpleMaterialComponent,
+  ],
 })
 export class ComponentsModule {}
