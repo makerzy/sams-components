@@ -38,7 +38,8 @@
 
       <ion-row>
         <app-simple-material [data]="{ header: 'Test', data: dummyData, textInput: { type: 'text' }, 
-          icon: { name: 'now_widgets', show: true, slot: 'end' } }" (sendData)="doMore('dummyData', $event)">
+          icon: { name: 'info', show: true, slot: 'end' },requiredNote:true }"
+          (sendData)="doMore('dummyData', $event)">
         </app-simple-material>
 
         <app-simple-material [data]="{ header: 'Test2', data: 'test2', textAreaInput: { rows: 6 } }">

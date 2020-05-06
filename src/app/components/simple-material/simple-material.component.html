@@ -1,37 +1,30 @@
 <mat-card class="" *ngIf="data">
-  <mat-hint class="required-font-size" slot="end" *ngIf="data.requiredNote" color="warn"></mat-hint>
+  <div>
+    <mat-hint *ngIf="data.requiredNote" class="required-font-size" slot="end">Lorem ipsum dolor sit, amet
+      consectetur adipisicing elit. Ipsum, dignissimos!</mat-hint>
+  </div>
+  <mat-form-field>
+    <div class="wrapper" *ngIf="data.textInput as input">
+      <mat-label>{{data.header}}</mat-label>
+      <div *ngIf="data.icon && data.icon.show">
+        <mat-icon matBadge="11" slot="end" matBadgeOverlap="false" color="primary">{{data.icon.name}}</mat-icon>
+      </div>
+      <input matInput
+        [ngClass]="{'ion-text-capitalize':(input.capitalize), 'ion-text-uppercase':(data.textInput.uppercase)}"
+        debounce='300' [min]="input.min" [max]="input.max" (changed)="sendEnteredData()" [type]="input.type"
+        [(ngModel)]="data.data" />
+    </div>
 
-  <mat-form-field *ngIf="data.textInput as input">
-    <mat-label>{{data.header}}</mat-label>
+    <div *ngIf="data.textAreaInput as input">
+      <mat-label>{{data.header}}</mat-label>
+      <textarea matInput [placeholder]="'placeholder'" (changed)="sendEnteredData()" [rows]="input.rows"
+        [(ngModel)]="data.data"></textarea>
 
-    <input matInput
-      [ngClass]="{'ion-text-capitalize':(input.capitalize), 'ion-text-uppercase':(data.textInput.uppercase)}"
-      debounce='300' [min]="input.min" [max]="input.max" (changed)="sendEnteredData()" [type]="input.type"
-      [(ngModel)]="data.data" />
-
-  </mat-form-field><br />
-
-  <mat-form-field *ngIf="data.textAreaInput as input">
-    <mat-label>{{data.header}}</mat-label>
-    <textarea matInput [placeholder]="'placeholder'" (changed)="sendEnteredData()" [rows]="input.rows"
-      [(ngModel)]="data.data"></textarea>
+    </div><br />
+    <div *ngIf="data.toggleInput as input">
+      <mat-slide-toggle (changed)="sendEnteredData()" [(ngModel)]="data.data">
+      </mat-slide-toggle>
+    </div>
   </mat-form-field>
-
-  <div *ngIf="data.toggleInput as input">
-
-    <mat-slide-toggle (changed)="sendEnteredData()" [(ngModel)]="data.data">
-    </mat-slide-toggle>
-
-  </div>
-
-  <div *ngIf="data.textOnly as text">
-    <mat-label class="ion-text-wrap">{{text.text}}</mat-label>
-  </div>
-
-  <div *ngIf="data.icon && data.icon.show">
-    <mat-icon matBadge="11" matBadgeOverlap="false" color="primary">{{data.icon.name}}</mat-icon>
-  </div>
-
-
 
 </mat-card>
